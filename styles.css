@@ -33,7 +33,7 @@ h2 {
     border-radius: 10px;
 }
 
-.popup {
+.popup-favorites {
     margin: 0 auto;
     padding: 1em;
     width: 100%;
@@ -76,7 +76,7 @@ h2 {
 .new-item-btn {
     width: 2em;
     height: 2em;
-    background-image: url(resources/img_add_task.png);
+    background-image: url(resources/img_add_item.png);
     background-size: contain;
     background-color: transparent;
     border: 1px solid var(--clr-almost-black);
@@ -91,10 +91,11 @@ h2 {
 .movie-search__card_wrapper {
     margin: 1em auto;
     padding: 1em;
-    width: 25em;
+    width: 100%;
+    max-width: 25em;
     display: flex;
     justify-content: space-between;
-    gap: 2em;
+    gap: 1em;
     color: var(--clr-almost-black);
     border: 1px solid var(--clr-light-gray);
     border-radius: 10px;
@@ -105,14 +106,18 @@ h2 {
     background-color: var(--clr-light-gray);
 }
 
-.movie-search__card_image {
-    height: auto;
+.movie-search__card_poster-wrapper {
     width: 4em;
-    display: block;
+}
+
+.movie-search__card_poster {
+    /* height: auto; */
+    width: 100%;
+    /* display: block; */
 }
 
 .movie-search__card_description-wrapper {
-    width: 18em;
+    width: 100%;
 }
 
 .movie-search__card_title {
@@ -127,8 +132,65 @@ h2 {
     color: var(--clr-enter);
 }
 
-.movie-search__card_category {
+.movie-search__card_type {
     font-size: 1em;
+}
+
+.movie-card {
+    margin: 1em auto;
+    padding: 1em;
+    width: 100%;
+    max-width: 30em;
+    height: 100%;
+    border: 1px dashed var(--clr-almost-black);
+    border-radius: 10px;
+}
+
+.movie-card__buttons-wrapper {
+    margin-bottom: 1em;
+    display: flex;
+    justify-content: space-between;
+}
+
+.movie-card__return-btn {
+    width: 2em;
+    height: 2em;
+    background-image: url(resources/img_back_arrow.png);
+    background-size: contain;
+    background-color: transparent;
+    border: 1px solid var(--clr-almost-black);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.movie-card__add-favor-btn {
+    width: 2em;
+    height: 2em;
+    background-image: url(resources/img_add_item.png);
+    background-size: contain;
+    background-color: transparent;
+    border: 1px solid var(--clr-almost-black);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.movie-card__description-wrapper {
+    margin-bottom: 1em;
+    display: flex;
+    justify-content: space-between;
+    gap: 1em;
+}
+
+.movie-card__poster-wrapper {
+    /* height: auto; */
+    width: 8em;
+    /* display: block; */
+}
+
+.movie-card__poster {
+    /* height: auto; */
+    width: 100%;
+    /* display: block; */
 }
 
 .display-item-wrapper {
