@@ -88,6 +88,49 @@ h2 {
     opacity: 0.5;
 }
 
+.movie-search__card_wrapper {
+    margin: 1em auto;
+    padding: 1em;
+    width: 25em;
+    display: flex;
+    justify-content: space-between;
+    gap: 2em;
+    color: var(--clr-almost-black);
+    border: 1px solid var(--clr-light-gray);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.movie-search__card_wrapper:hover {
+    background-color: var(--clr-light-gray);
+}
+
+.movie-search__card_image {
+    height: auto;
+    width: 4em;
+    display: block;
+}
+
+.movie-search__card_description-wrapper {
+    width: 18em;
+}
+
+.movie-search__card_title {
+    margin-bottom: 0.3em;
+    font-size: 1.3em;
+    font-weight: 700;
+}
+
+.movie-search__card_year {
+    margin-bottom: 0.6em;
+    font-size: 0.8em;
+    color: var(--clr-enter);
+}
+
+.movie-search__card_category {
+    font-size: 1em;
+}
+
 .display-item-wrapper {
     margin-bottom: 3px;
     height: 2.5em;
