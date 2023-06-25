@@ -65,7 +65,7 @@ h2 {
 .movie-search__btn {
     width: 2em;
     height: 2em;
-    background-image: url(/resources/img_search.png);
+    background-image: url("../resources/img_search.png");
     background-size: contain;
     background-color: transparent;
     border: 1px solid var(--clr-almost-black);
@@ -76,7 +76,7 @@ h2 {
 .new-item-btn {
     width: 2em;
     height: 2em;
-    background-image: url(/resources/img_add_task.png);
+    background-image: url("../resources/img_add_task.png");
     background-size: contain;
     background-color: transparent;
     border: 1px solid var(--clr-almost-black);
@@ -113,7 +113,7 @@ h2 {
 .item-hide-btn {
     width: 2em;
     height: 2em;
-    background-image: url(/resources/img_close.png);
+    background-image: url("../resources/img_close.png");
     background-size: contain;
     background-color: transparent;
     border: none;
@@ -132,7 +132,7 @@ h2 {
     margin-bottom: 15px;
     width: 2em;
     height: 2em;
-    background-image: url(/resources/img_delete.png);
+    background-image: url("../resources/img_delete.png");
     background-size: contain;
     background-color: transparent;
     border: 1px solid var(--clr-almost-black);
@@ -143,7 +143,7 @@ h2 {
 .restore-btn {
     width: 2em;
     height: 2em;
-    background-image: url(/resources/img_restore_from_trash.png);
+    background-image: url("../resources/img_restore_from_trash.png");
     background-size: contain;
     background-color: transparent;
     border: none;
