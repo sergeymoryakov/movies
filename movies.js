@@ -1,7 +1,17 @@
-import { movieExampleData } from "./data.js";
+const movieSearchNode = document.getElementById("movieSearch");
+const movieSearchBtnNode = document.getElementById("movieSearchBtn");
+const searchResultNode = document.getElementById("searchResult");
 
-const movieExample = movieExampleData;
-
-console.log(movieExample[0].Title);
-console.log(movieExample[1].Title);
-console.log(movieExample[2].Title);
+movieSearchBtnNode.addEventListener("click", function () {
+    const movieName = movieSearchNode.value;
+    const url = `http://www.omdbapi.com/?s=${movieName}&apikey=${key}`;
+    if (movieName.length <= 0) {
+        searchResultNode.innerHTML = `<h3 class="msg">Please enter a movie name...</h3>`;
+    } else {
+        fetch(url)
+            .then((resp) => resp.json())
+            .then((data) => {
+                console.log(data);
+            });
+    }
+});
