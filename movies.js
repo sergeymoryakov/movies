@@ -82,20 +82,20 @@ function createDetailedCard(cardId) {
 }
 
 function renderDetailedCard(cardData) {
-    console.log(cardData.Title);
-    console.log(cardData.Year);
-    console.log(cardData.Rated);
-    console.log(cardData.Released);
-    console.log(cardData.Runtime);
-    console.log(cardData.Genre);
-    console.log(cardData.Director);
-    console.log(cardData.Writer);
-    console.log(cardData.Actors);
-    console.log(cardData.Plot);
-    console.log(cardData.Poster);
+    // console.log(cardData.Title);
+    // console.log(cardData.Year);
+    // console.log(cardData.Rated);
+    // console.log(cardData.Released);
+    // console.log(cardData.Runtime);
+    // console.log(cardData.Genre);
+    // console.log(cardData.Director);
+    // console.log(cardData.Writer);
+    // console.log(cardData.Actors);
+    // console.log(cardData.Plot);
+    // console.log(cardData.Poster);
 
     // ATTN: BELO DOESN'T WORK
-    // cardDetailsNode.innerHTML = "";
+    cardDetailsNode.innerHTML = "";
 
     const htmlCodeDetailed = `
      <div class="movie-card__description-wrapper">
