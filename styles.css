@@ -16,6 +16,10 @@ body {
     background-color: var(--clr-almost-black);
 }
 
+.body-fixed {
+    overflow: hidden;
+}
+
 h2 {
     margin-bottom: 15px;
     font-size: 1.5em;
@@ -144,23 +148,43 @@ h3 {
     font-size: 1em;
 }
 
-.movie-card {
-    margin: 1em auto;
+.card-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.3);
+    visibility: hidden;
+    /* transition: all 0.5s ease; */
+}
+
+.card-popup-on {
+    visibility: visible;
+}
+
+.card-popup-content {
+    /* margin: 1em auto; */
     padding: 1em;
     width: 100%;
     max-width: 30em;
-    height: 100%;
-    border: 1px dashed var(--clr-almost-black);
+    height: auto;
+    /* TO-DO: remove before flight */
+    border: 1px dashed red;
     border-radius: 10px;
+    background-color: var(--clr-almost-white);
 }
 
-.movie-card__buttons-wrapper {
+.card-popup__buttons-wrapper {
     margin-bottom: 1em;
     display: flex;
     justify-content: space-between;
 }
 
-.movie-card__return-btn {
+.card-popup__return-btn {
     width: 2em;
     height: 2em;
     background-image: url(resources/img_back_arrow.png);
@@ -171,7 +195,7 @@ h3 {
     cursor: pointer;
 }
 
-.movie-card__add-favor-btn {
+.card-popup__add-favor-btn {
     width: 2em;
     height: 2em;
     background-image: url(resources/img_add_item.png);
@@ -182,20 +206,20 @@ h3 {
     cursor: pointer;
 }
 
-.movie-card__description-wrapper {
+.card-popup__description-wrapper {
     margin-bottom: 1em;
     display: flex;
     justify-content: space-between;
     gap: 1em;
 }
 
-.movie-card__poster-wrapper {
+.card-popup__poster-wrapper {
     /* height: auto; */
     width: 8em;
     /* display: block; */
 }
 
-.movie-card__poster {
+.card-popup__poster {
     /* height: auto; */
     width: 100%;
     /* display: block; */

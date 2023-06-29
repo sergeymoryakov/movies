@@ -1,6 +1,15 @@
+const BODY_FIXED_CLASSNAME = "body-fixed";
+const CARD_POPUP_ON_CLASSNAME = "card-popup-on";
+
+const bodyNode = document.querySelector("body");
 const movieSearchNode = document.getElementById("movieSearch");
 const movieSearchBtnNode = document.getElementById("movieSearchBtn");
 let searchResultNode = document.getElementById("searchResult");
+const cardPopUpNode = document.getElementById("cardPopUp");
+const cardPopUpReturnBtnNode = document.getElementById("cardPopUpReturnBtn");
+const cardPopUpAddFavorBtnNode = document.getElementById(
+    "cardPopUpAddFavorBtn"
+);
 const cardDetailsNode = document.getElementById("cardDetails");
 
 movieSearchBtnNode.addEventListener("click", function () {
@@ -21,6 +30,8 @@ movieSearchBtnNode.addEventListener("click", function () {
             });
     }
 });
+
+cardPopUpReturnBtnNode.addEventListener("click", toggleCardPopUp);
 
 function renderNoFindings() {
     searchResultNode.innerHTML = `<h3 class="msg">Sorry, nothing in database. Try again.</h3>`;
@@ -99,16 +110,16 @@ function renderDetailedCard(cardData) {
             : "./resources/img_no-poster.png";
 
     const htmlCodeDetailed = `
-     <div class="movie-card__description-wrapper">
-        <div class="movie-card__poster-wrapper">
+     <div class="card-popup__description-wrapper">
+        <div class="card-popup__poster-wrapper">
             <img
-                class="movie-card__poster"
+                class="card-popup__poster"
                 src="${cardPosterSrc}"
                 alt="No Poster"
             />
         </div>
-        <div class="movie-card__wrapper-inner">
-            <h2 class="movie-card__title">${cardData.Title}</h2>
+        <div class="card-popup__wrapper-inner">
+            <h2 class="card-popup__title">${cardData.Title}</h2>
             <p>Year: ${cardData.Year}</p>
             <p>Rated: ${cardData.Rated}</p>
             <p>Released: ${cardData.Released}</p>
@@ -119,8 +130,14 @@ function renderDetailedCard(cardData) {
             <p>Actors: ${cardData.Actors}</p>
         </div>
     </div>
-    <p class="movie-card__plot">${cardData.Plot}</p>
+    <p class="card-popup__plot">${cardData.Plot}</p>
     `;
 
     cardDetailsNode.innerHTML = htmlCodeDetailed;
+    toggleCardPopUp();
+}
+
+function toggleCardPopUp() {
+    bodyNode.classList.toggle(BODY_FIXED_CLASSNAME);
+    cardPopUpNode.classList.toggle(CARD_POPUP_ON_CLASSNAME);
 }
