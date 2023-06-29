@@ -1,6 +1,18 @@
 const BODY_FIXED_CLASSNAME = "body-fixed";
 const CARD_POPUP_ON_CLASSNAME = "card-popup-on";
 
+const myFavorites = [
+    {
+        id: 0,
+        imdbID: "tt1745960",
+        title: "Top Gun: Maverick",
+        completed: false,
+        hidden: false,
+    },
+];
+
+let activeCard = {};
+
 const bodyNode = document.querySelector("body");
 const movieSearchNode = document.getElementById("movieSearch");
 const movieSearchBtnNode = document.getElementById("movieSearchBtn");
@@ -11,6 +23,7 @@ const cardPopUpAddFavorBtnNode = document.getElementById(
     "cardPopUpAddFavorBtn"
 );
 const cardDetailsNode = document.getElementById("cardDetails");
+const myFavoritesListNode = document.getElementById("myFavoritesList");
 
 movieSearchBtnNode.addEventListener("click", function () {
     const movieName = movieSearchNode.value;
@@ -33,13 +46,22 @@ movieSearchBtnNode.addEventListener("click", function () {
 
 cardPopUpReturnBtnNode.addEventListener("click", toggleCardPopUp);
 
+cardPopUpAddFavorBtnNode.addEventListener("click", function () {
+    addFavoriteItem(activeCard);
+    renderFavorites();
+});
+
+function clearSearchResult() {
+    return (searchResultNode.innerHTML = "");
+}
+
 function renderNoFindings() {
     searchResultNode.innerHTML = `<h3 class="msg">Sorry, nothing in database. Try again.</h3>`;
 }
 
 function renderSearchResult(result) {
     let htmlCode = "";
-    searchResultNode.innerHTML = "";
+    clearSearchResult();
 
     result.Search.forEach((item) => {
         // Set path to "No Poster" image placeholder
@@ -135,9 +157,80 @@ function renderDetailedCard(cardData) {
 
     cardDetailsNode.innerHTML = htmlCodeDetailed;
     toggleCardPopUp();
+    activeCard = cardData;
+    console.log(activeCard);
 }
 
 function toggleCardPopUp() {
     bodyNode.classList.toggle(BODY_FIXED_CLASSNAME);
     cardPopUpNode.classList.toggle(CARD_POPUP_ON_CLASSNAME);
+}
+
+function clearMyFavorites() {
+    return (myFavoritesListNode.innerHTML = "");
+}
+
+function addFavoriteItem(favoriteData) {
+    const newFavoriteItem = {
+        id: generateUniqueId(myFavorites),
+        imdbID: favoriteData.imdbID,
+        title: favoriteData.Title,
+        completed: false,
+        hidden: false,
+    };
+
+    console.log(newFavoriteItem);
+    myFavorites.push(newFavoriteItem);
+    console.log(myFavorites);
+}
+
+function generateUniqueId(arrayList) {
+    let id = 0;
+    while (arrayList.some((item) => item.id === id)) {
+        id++;
+    }
+    return id;
+}
+
+function createFavotiteItem(item) {
+    const listItem = document.createElement("li");
+    if (item.completed) {
+        listItem.className = "display-item-wrapper completed";
+    } else {
+        listItem.className = "display-item-wrapper";
+    }
+
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.id = `checkbox_${item.id}`;
+    checkbox.className = "item-checkbox";
+    checkbox.checked = item.completed;
+
+    const label = document.createElement("label");
+    label.className = "display-item";
+    label.htmlFor = `checkbox_${item.id}`;
+    label.innerText = item.title;
+
+    const hideButton = document.createElement("button");
+    hideButton.className = "item-hide-btn";
+    hideButton.id = `btn_${item.id}`;
+    // hideButton.innerText = '';
+
+    listItem.appendChild(checkbox);
+    listItem.appendChild(label);
+    listItem.appendChild(hideButton);
+
+    return listItem;
+}
+
+function renderFavorites() {
+    clearMyFavorites();
+
+    myFavorites.forEach((item) => {
+        if (!item.hidden) {
+            const favoriteItem = createFavotiteItem(item);
+            myFavoritesListNode.appendChild(favoriteItem);
+            console.log(`favoriteItem : ${favoriteItem}`);
+        }
+    });
 }

@@ -49,7 +49,7 @@ const actionItems = [
 
 const newItemInputNode = document.getElementById("newItemInput");
 const newItemBtnNode = document.getElementById("newItemBtn");
-const listContainerNode = document.getElementById("listContainer");
+const myFavoritesListNode = document.getElementById("myFavoritesList");
 const trashSwitchNode = document.getElementById("trashSwitch");
 const trashContainerNode = document.getElementById("trashContainer");
 
@@ -163,7 +163,7 @@ function clearInputField() {
 }
 
 function clearActiveList() {
-    return (listContainerNode.innerHTML = "");
+    return (myFavoritesListNode.innerHTML = "");
 }
 
 // Render the list
@@ -174,7 +174,7 @@ function renderActiveList() {
     actionItems.forEach((item) => {
         if (!item.hidden) {
             const listItem = createListItem(item);
-            listContainerNode.appendChild(listItem);
+            myFavoritesListNode.appendChild(listItem);
         }
     });
 
