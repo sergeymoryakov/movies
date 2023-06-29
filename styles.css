@@ -23,6 +23,13 @@ h2 {
     font-weight: 700;
 }
 
+h3 {
+    margin-bottom: 15px;
+    font-size: 1.3em;
+    line-height: 1.3em;
+    font-weight: 700;
+}
+
 .container {
     margin: 0 auto;
     padding: 30px 15px;
@@ -108,6 +115,7 @@ h2 {
 
 .movie-search__card_poster-wrapper {
     width: 4em;
+    /* border: 1px solid var(--clr-light-gray); */
 }
 
 .movie-search__card_poster {

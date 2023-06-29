@@ -13,29 +13,36 @@ movieSearchBtnNode.addEventListener("click", function () {
             .then((resp) => resp.json())
             .then((data) => {
                 console.log(data);
-                renderSearchResult(data);
+                if (data.Response === "False") {
+                    renderNoFindings();
+                } else {
+                    renderSearchResult(data);
+                }
             });
     }
 });
+
+function renderNoFindings() {
+    searchResultNode.innerHTML = `<h3 class="msg">Sorry, nothing in database. Try again.</h3>`;
+}
 
 function renderSearchResult(result) {
     let htmlCode = "";
     searchResultNode.innerHTML = "";
 
     result.Search.forEach((item) => {
-        // ATTN: FOR DEV ONLY - REMOVE IN PRODUCTION
-        // console.log(item.Poster);
-        // console.log(item.Title);
-        // console.log(item.Type);
-        // console.log(item.Year);
-        // console.log(item.imdbID);
+        // Set path to "No Poster" image placeholder
+        const posterSrc =
+            item.Poster !== "N/A"
+                ? item.Poster
+                : "./resources/img_no-poster.png";
 
         htmlCode += `
         <li id="${item.imdbID}" class="movie-search__card_wrapper">
             <div class="movie-search__card_poster-wrapper">
                 <img
                     class="movie-search__card_poster"
-                    src="${item.Poster}"
+                    src="${posterSrc}"
                     alt="No Poster"
                 />
             </div>
@@ -61,11 +68,12 @@ function renderSearchResult(result) {
 }
 
 function handleCardSelector(event) {
-    const cardSelected = event.target;
-    // console.log(cardSelected);
+    const cardSelected = event.target.closest(".movie-search__card_wrapper");
+    if (!cardSelected) return; // ignore clicks outside the card wrapper
+    console.log(cardSelected);
 
     const cardId = cardSelected.id;
-    // console.log(cardId);
+    console.log(cardId);
 
     console.log(`Selected Card ID ${cardId}`);
     createDetailedCard(cardId);
@@ -82,27 +90,20 @@ function createDetailedCard(cardId) {
 }
 
 function renderDetailedCard(cardData) {
-    // console.log(cardData.Title);
-    // console.log(cardData.Year);
-    // console.log(cardData.Rated);
-    // console.log(cardData.Released);
-    // console.log(cardData.Runtime);
-    // console.log(cardData.Genre);
-    // console.log(cardData.Director);
-    // console.log(cardData.Writer);
-    // console.log(cardData.Actors);
-    // console.log(cardData.Plot);
-    // console.log(cardData.Poster);
-
-    // ATTN: BELO DOESN'T WORK
     cardDetailsNode.innerHTML = "";
+
+    // Set path to "No Poster" image placeholder
+    const cardPosterSrc =
+        cardData.Poster !== "N/A"
+            ? cardData.Poster
+            : "./resources/img_no-poster.png";
 
     const htmlCodeDetailed = `
      <div class="movie-card__description-wrapper">
         <div class="movie-card__poster-wrapper">
             <img
                 class="movie-card__poster"
-                src="${cardData.Poster}"
+                src="${cardPosterSrc}"
                 alt="No Poster"
             />
         </div>
