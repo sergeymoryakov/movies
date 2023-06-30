@@ -25,6 +25,7 @@ const movieSearchNode = document.getElementById("movieSearch");
 const movieSearchBtnNode = document.getElementById("movieSearchBtn");
 let searchResultNode = document.getElementById("searchResult");
 const cardPopUpNode = document.getElementById("cardPopUp");
+const cardPopUpContentNode = document.getElementById("cardPopUpContent");
 const cardPopUpReturnBtnNode = document.getElementById("cardPopUpReturnBtn");
 const cardPopUpAddFavorBtnNode = document.getElementById(
     "cardPopUpAddFavorBtn"
@@ -54,6 +55,15 @@ movieSearchBtnNode.addEventListener("click", function () {
 renderFavorites();
 
 cardPopUpReturnBtnNode.addEventListener("click", toggleCardPopUp);
+
+cardPopUpNode.addEventListener("click", (event) => {
+    const isClickOutsideContent = !event
+        .composedPath()
+        .includes(cardPopUpContentNode);
+    if (isClickOutsideContent) {
+        toggleCardPopUp();
+    }
+});
 
 cardPopUpAddFavorBtnNode.addEventListener("click", function () {
     // console.log(`activeCard.imdbID = ${activeCard.imdbID}`);
