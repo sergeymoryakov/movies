@@ -23,7 +23,10 @@ let activeCard = {};
 const bodyNode = document.querySelector("body");
 const movieSearchNode = document.getElementById("movieSearch");
 const movieSearchBtnNode = document.getElementById("movieSearchBtn");
+
+// consider deletion:
 let searchResultNode = document.getElementById("searchResult");
+
 const cardPopUpNode = document.getElementById("cardPopUp");
 const cardPopUpContentNode = document.getElementById("cardPopUpContent");
 const cardPopUpReturnBtnNode = document.getElementById("cardPopUpReturnBtn");

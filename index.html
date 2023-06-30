@@ -12,17 +12,27 @@
     <body>
         <div class="container">
             <h2>Movie Search</h2>
-            <div class="movie-search">
-                <input
-                    type="text"
-                    id="movieSearch"
-                    class="movie-search__input"
-                    placeholder="Type a movie name here"
-                />
-                <button id="movieSearchBtn" class="movie-search__btn"></button>
+            <div class="my-search">
+                <div class="movie-search">
+                    <input
+                        type="text"
+                        id="movieSearch"
+                        class="movie-search__input"
+                        placeholder="Type a movie name here"
+                    />
+                    <button
+                        id="movieSearchBtn"
+                        class="movie-search__btn"
+                    ></button>
+                </div>
+
+                <ul id="searchResult" class="search-result"></ul>
             </div>
 
-            <ul id="searchResult" class="search-result"></ul>
+            <h2>My Favorites</h2>
+            <div class="my-favorites">
+                <ul id="myFavoritesList" class="my-favorites-list"></ul>
+            </div>
 
             <div id="cardPopUp" class="card-popup">
                 <div id="cardPopUpContent" class="card-popup-content">
@@ -38,26 +48,6 @@
                     </div>
                     <span id="cardDetails"></span>
                 </div>
-            </div>
-
-            <div class="popup-favorites">
-                <h2>My Favorites</h2>
-                <!-- <div class="new-item">
-                    <input
-                        type="text"
-                        id="newItemInput"
-                        class="new-item-input"
-                        placeholder="Type a new action item here"
-                    />
-                    <button id="newItemBtn" class="new-item-btn"></button>
-                </div> -->
-
-                <!-- TO-DO: listContainer => myFavoritesList -->
-                <!-- TO-DO: display-items-list => my-favorites-list -->
-                <ul id="myFavoritesList" class="my-favorites-list"></ul>
-
-                <!-- <button id="trashSwitch" class="trash-switch"></button>
-                <ul id="trashContainer" class="display-trash-list"></ul> -->
             </div>
         </div>
         <script src="key.js"></script>
