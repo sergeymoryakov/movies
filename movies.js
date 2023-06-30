@@ -9,6 +9,13 @@ const myFavorites = [
         completed: false,
         hidden: false,
     },
+    {
+        id: 1,
+        imdbID: "tt0079501",
+        title: "Mad Max",
+        completed: false,
+        hidden: false,
+    },
 ];
 
 let activeCard = {};
@@ -43,6 +50,8 @@ movieSearchBtnNode.addEventListener("click", function () {
             });
     }
 });
+
+renderFavorites();
 
 cardPopUpReturnBtnNode.addEventListener("click", toggleCardPopUp);
 
@@ -233,4 +242,46 @@ function renderFavorites() {
             console.log(`favoriteItem : ${favoriteItem}`);
         }
     });
+
+    const checkboxes = document.querySelectorAll(".item-checkbox");
+    checkboxes.forEach((checkbox) =>
+        checkbox.addEventListener("click", handleCheckboxChange)
+    );
+
+    const hideButtons = document.querySelectorAll(".item-hide-btn");
+    hideButtons.forEach((button) =>
+        button.addEventListener("click", handleHideButtonClick)
+    );
+}
+
+function handleCheckboxChange(event) {
+    const checkbox = event.target;
+    // get item ID from checkbox ID
+    const itemId = parseInt(checkbox.id.split("_")[1]);
+
+    // update check-status for relvant ID
+    const item = myFavorites.find((item) => item.id === itemId);
+    if (item) {
+        item.completed = checkbox.checked;
+        console.log(`favorite item ${itemId} check-status: ${item.completed}`);
+    }
+    renderFavorites();
+}
+
+function handleHideButtonClick(event) {
+    const button = event.target;
+    // get item ID from checkbox ID
+    const itemId = parseInt(button.id.split("_")[1]);
+
+    if (!confirm("Please confirm permanent deletion")) {
+        return;
+    }
+
+    // update check-status for relvant ID
+    const item = myFavorites.find((item) => item.id === itemId);
+    if (item) {
+        item.hidden = true;
+        console.log(`favorite item ${itemId} hidden-status: ${item.hidden}`);
+    }
+    renderFavorites();
 }
