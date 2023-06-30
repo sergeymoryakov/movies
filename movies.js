@@ -56,9 +56,21 @@ renderFavorites();
 cardPopUpReturnBtnNode.addEventListener("click", toggleCardPopUp);
 
 cardPopUpAddFavorBtnNode.addEventListener("click", function () {
-    addFavoriteItem(activeCard);
-    renderFavorites();
+    // console.log(`activeCard.imdbID = ${activeCard.imdbID}`);
+
+    if (isActiveInFavorites()) {
+        alert(`Action failed: ${activeCard.Title} is already in Favorites`);
+        return;
+    } else {
+        addFavoriteItem(activeCard);
+        renderFavorites();
+        return;
+    }
 });
+
+function clearInputField() {
+    return (movieSearchNode.value = "");
+}
 
 function clearSearchResult() {
     return (searchResultNode.innerHTML = "");
@@ -99,6 +111,7 @@ function renderSearchResult(result) {
         `;
     });
     searchResultNode.innerHTML = htmlCode;
+    clearInputField();
 
     const cardSelector = document.querySelectorAll(
         // ".movie-search__card_wrapper"
@@ -126,7 +139,7 @@ function createDetailedCard(cardId) {
     fetch(urlCard)
         .then((resp) => resp.json())
         .then((data) => {
-            console.log(data);
+            // console.log(data);
             renderDetailedCard(data);
         });
 }
@@ -168,6 +181,7 @@ function renderDetailedCard(cardData) {
     toggleCardPopUp();
     activeCard = cardData;
     console.log(activeCard);
+    console.log(activeCard.imdbID);
 }
 
 function toggleCardPopUp() {
@@ -179,11 +193,33 @@ function clearMyFavorites() {
     return (myFavoritesListNode.innerHTML = "");
 }
 
-function addFavoriteItem(favoriteData) {
+function isActiveInFavorites() {
+    console.log("isActiveInFavorites function runs:");
+    console.log(`activeCard.imdbID = ${activeCard.imdbID}`);
+    console.log(myFavorites);
+
+    // NOTE: the return in below cycle DOES NOT EXIT the isActiveInFavorites function!
+    // myFavorites.forEach((item) => {
+    //     if (item.imdbID === activeCard.imdbID) {
+    //         return true;
+    //     }
+    // });
+
+    // USE 'for...of' instead:
+    for (const item of myFavorites) {
+        console.log(`myFavorites.imdbID = ${item.imdbID}`);
+        if (item.imdbID === activeCard.imdbID) {
+            return true;
+        }
+    }
+    return false;
+}
+
+function addFavoriteItem(activeCard) {
     const newFavoriteItem = {
         id: generateUniqueId(myFavorites),
-        imdbID: favoriteData.imdbID,
-        title: favoriteData.Title,
+        imdbID: activeCard.imdbID,
+        title: activeCard.Title,
         completed: false,
         hidden: false,
     };
@@ -191,6 +227,7 @@ function addFavoriteItem(favoriteData) {
     console.log(newFavoriteItem);
     myFavorites.push(newFavoriteItem);
     console.log(myFavorites);
+    alert(`Success: ${activeCard.Title} was added to Favorites.`);
 }
 
 function generateUniqueId(arrayList) {
