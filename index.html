@@ -11,8 +11,22 @@
     </head>
     <body>
         <div class="container">
-            <h2>Movie Search</h2>
-            <div class="my-search">
+            <div class="tab">
+                <button
+                    class="tablinks"
+                    onclick="tabSelector(event, 'mySearch')"
+                >
+                    Movie Search
+                </button>
+                <button
+                    class="tablinks"
+                    onclick="tabSelector(event, 'myFavorites')"
+                >
+                    My Favorites
+                </button>
+            </div>
+            <!-- <h2>Movie Search</h2> -->
+            <div id="mySearch" class="tabcontent">
                 <div class="movie-search">
                     <input
                         type="text"
@@ -29,8 +43,8 @@
                 <ul id="searchResult" class="search-result"></ul>
             </div>
 
-            <h2>My Favorites</h2>
-            <div class="my-favorites">
+            <!-- <h2>My Favorites</h2> -->
+            <div id="myFavorites" class="tabcontent">
                 <ul id="myFavoritesList" class="my-favorites-list"></ul>
             </div>
 
@@ -53,5 +67,6 @@
         <script src="key.js"></script>
         <!-- set script as 'module' to import data -->
         <script type="module" src="movies.js"></script>
+        <script src="tabselector.js"></script>
     </body>
 </html>
