@@ -167,7 +167,8 @@ function renderDetailedCard(cardData) {
             : "./resources/img_no-poster.png";
 
     const htmlCodeDetailed = `
-     <div class="card-popup__description-wrapper">
+    <h2 class="card-popup__title">${cardData.Title}</h2>
+    <div class="card-popup__description-wrapper">
         <div class="card-popup__poster-wrapper">
             <img
                 class="card-popup__poster"
@@ -176,7 +177,6 @@ function renderDetailedCard(cardData) {
             />
         </div>
         <div class="card-popup__wrapper-inner">
-            <h2 class="card-popup__title">${cardData.Title}</h2>
             <p>Year: ${cardData.Year}</p>
             <p>Rated: ${cardData.Rated}</p>
             <p>Released: ${cardData.Released}</p>

@@ -258,6 +258,10 @@ h3 {
     /* display: block; */
 }
 
+.card-popup__wrapper-inner p {
+    margin-bottom: 0.3em;
+}
+
 .my-favorites-list {
     display: flex;
     flex-direction: column;
