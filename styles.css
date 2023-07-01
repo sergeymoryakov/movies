@@ -35,20 +35,19 @@ h3 {
 }
 
 .container {
-    margin: 0 auto;
-    padding: 30px 15px;
+    margin: auto;
+    padding: 15px;
     max-width: 600px;
+    height: 100vh;
     color: var(--clr-back);
     background-color: var(--clr-almost-white);
     border: 1px solid var(--clr-almost-white);
-    border-radius: 10px;
+    /* border-radius: 10px; */
 }
 
 /* style tabs */
 .tab {
     overflow: hidden;
-
-    /* verify colors */
     background-color: var(--clr-gray);
     border: 1px solid var(--clr-gray);
     border-bottom: none;
@@ -57,13 +56,14 @@ h3 {
 /* style buttons */
 .tab button {
     font-size: 1.3em;
+    line-height: 2em;
     color: var(--clr-almost-white);
     background-color: inherit;
     float: left;
     border: none;
     outline: none;
     cursor: pointer;
-    padding: 1em 1em;
+    padding: 0 0.6em;
     transition: 0.3s;
 }
 
@@ -84,7 +84,7 @@ h3 {
     margin: 0 auto;
     padding: 1em;
     width: 100%;
-    height: 100%;
+    height: 85vh;
     border: 1px solid var(--clr-gray);
     border-top: none;
     border-radius: 0 0 10px 10px;
@@ -119,6 +119,14 @@ h3 {
     cursor: pointer;
 }
 
+.search-result {
+    height: 72vh;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    border: 1px dashed red;
+}
+
 .movie-search__card_wrapper {
     margin: 1em auto;
     padding: 1em;
@@ -131,6 +139,7 @@ h3 {
     border: 1px solid var(--clr-light-gray);
     border-radius: 10px;
     cursor: pointer;
+    scroll-snap-align: none center;
 }
 
 .movie-search__card_wrapper:hover {
@@ -270,6 +279,7 @@ h3 {
     width: 2em;
     height: 2em;
     background-image: url(resources/img_delete.png);
+    background-repeat: no-repeat;
     background-size: contain;
     background-color: transparent;
     border: none;
