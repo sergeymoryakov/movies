@@ -16,6 +16,18 @@ body {
     background-color: var(--clr-almost-black);
 }
 
+@media (max-width: 400px) {
+    body {
+        font-size: 0.7em;
+    }
+}
+
+@media (max-width: 250px) {
+    body {
+        font-size: 0.5em;
+    }
+}
+
 .body-fixed {
     overflow: hidden;
 }
