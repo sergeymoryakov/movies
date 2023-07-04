@@ -25,7 +25,7 @@ const movieSearchNode = document.getElementById("movieSearch");
 const movieSearchBtnNode = document.getElementById("movieSearchBtn");
 
 // consider deletion:
-let searchResultNode = document.getElementById("searchResult");
+const searchResultNode = document.getElementById("searchResult");
 
 const cardPopUpNode = document.getElementById("cardPopUp");
 const cardPopUpContentNode = document.getElementById("cardPopUpContent");
@@ -51,6 +51,10 @@ movieSearchBtnNode.addEventListener("click", function () {
                 } else {
                     renderSearchResult(data);
                 }
+            })
+            .catch((error) => {
+                console.error("Error while fetch:", error);
+                searchResultNode.innerHTML = `<h3 class="msg">An error occured. Please try again later.`;
             });
     }
 });
@@ -82,11 +86,11 @@ cardPopUpAddFavorBtnNode.addEventListener("click", function () {
 });
 
 function clearInputField() {
-    return (movieSearchNode.value = "");
+    movieSearchNode.value = "";
 }
 
 function clearSearchResult() {
-    return (searchResultNode.innerHTML = "");
+    searchResultNode.innerHTML = "";
 }
 
 function renderNoFindings() {
@@ -94,6 +98,11 @@ function renderNoFindings() {
 }
 
 function renderSearchResult(result) {
+    if (!Array.isArray(result.Search)) {
+        console.error("Error: Responce received, responce is not array.");
+        searchResultNode.innerHTML = `<h3 class="msg">An error occured. Please try again later.`;
+    }
+
     let htmlCode = "";
     clearSearchResult();
 
@@ -154,6 +163,10 @@ function createDetailedCard(cardId) {
         .then((data) => {
             // console.log(data);
             renderDetailedCard(data);
+        })
+        .catch((error) => {
+            console.error("Error while fetch:", error);
+            cardDetailsNode.innerHTML = `<h3 class="msg">An error occured. Please try again later.`;
         });
 }
 
@@ -203,7 +216,7 @@ function toggleCardPopUp() {
 }
 
 function clearMyFavorites() {
-    return (myFavoritesListNode.innerHTML = "");
+    myFavoritesListNode.innerHTML = "";
 }
 
 function isActiveInFavorites() {
@@ -251,7 +264,7 @@ function generateUniqueId(arrayList) {
     return id;
 }
 
-function createFavotiteItem(item) {
+function createFavoriteItem(item) {
     const listItem = document.createElement("li");
     if (item.completed) {
         listItem.className = "display-item-wrapper completed";
@@ -287,7 +300,7 @@ function renderFavorites() {
 
     myFavorites.forEach((item) => {
         if (!item.hidden) {
-            const favoriteItem = createFavotiteItem(item);
+            const favoriteItem = createFavoriteItem(item);
             myFavoritesListNode.appendChild(favoriteItem);
             console.log(`favoriteItem : ${favoriteItem}`);
         }
