@@ -1,4 +1,4 @@
 # movies
 A simple movie search and watching tracker. 
 Technologies: HTML, CSS, JS.
-API: 
+API: https://www.omdbapi.com/
