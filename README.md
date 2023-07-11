@@ -1,2 +1,4 @@
 # movies
-Simple movie search and watching tracker. HTML, CSS, JS.
+A simple movie search and watching tracker. 
+Technologies: HTML, CSS, JS.
+API: 
